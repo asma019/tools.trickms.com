@@ -21,7 +21,7 @@ convertBtn.addEventListener('click', () => {
         const downloadLink = document.createElement('a');
         downloadLink.style.display = 'none';
         downloadLink.href = webpUrl;
-        downloadLink.download = 'WebP-converted-by-TrickMS.webp';
+        downloadLink.download = 'WebP-converted-by-TutorialGTP.webp';
         document.body.appendChild(downloadLink);
         downloadLink.click();
         window.URL.revokeObjectURL(webpUrl);
