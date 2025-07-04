@@ -1,91 +1,795 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Link List- TrickMS</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+	<title>Invitely.fun - AI-Powered Invitation Creator</title>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 	<style>
-		/* Container styles */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
 		body {
-			background-color: #F4F4F4;
-			font-family: 'Montserrat', sans-serif;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 100vh;
+			font-family: 'Inter', sans-serif;
+			line-height: 1.6;
+			color: #333;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			min-height: 100vh;
 		}
 
 		.container {
-			background-color: #fff;
-			padding: 48px;
-			border-radius: 8px;
-			box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 20px;
+		}
+
+		/* Header */
+		header {
+			background: rgba(255, 255, 255, 0.95);
+			backdrop-filter: blur(10px);
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 1000;
+			box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+		}
+
+		nav {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 1rem 0;
+		}
+
+		.logo {
+			font-size: 1.8rem;
+			font-weight: 700;
+			color: #6366f1;
+			text-decoration: none;
+		}
+
+		.nav-links {
+			display: flex;
+			list-style: none;
+			gap: 2rem;
+		}
+
+		.nav-links a {
+			text-decoration: none;
+			color: #333;
+			font-weight: 500;
+			transition: color 0.3s ease;
+		}
+
+		.nav-links a:hover {
+			color: #6366f1;
+		}
+
+		.cta-button {
+			background: linear-gradient(135deg, #6366f1, #8b5cf6);
+			color: white;
+			padding: 0.75rem 1.5rem;
+			border-radius: 50px;
+			text-decoration: none;
+			font-weight: 600;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		.cta-button:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+		}
+
+		/* Main Content */
+		main {
+			padding-top: 100px;
+		}
+
+		/* Hero Section */
+		.hero {
 			text-align: center;
+			padding: 4rem 0;
+			color: white;
+		}
+
+		.hero h1 {
+			font-size: 3.5rem;
+			font-weight: 700;
+			margin-bottom: 1rem;
+			background: linear-gradient(135deg, #fff, #e0e7ff);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+		}
+
+		.hero p {
+			font-size: 1.25rem;
+			margin-bottom: 2rem;
+			opacity: 0.9;
 			max-width: 600px;
-			width: 100%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.hero-buttons {
+			display: flex;
+			justify-content: center;
+			gap: 1rem;
+			flex-wrap: wrap;
+		}
+
+		.btn-primary {
+			background: linear-gradient(135deg, #f59e0b, #f97316);
+			color: white;
+			padding: 1rem 2rem;
+			border-radius: 50px;
+			text-decoration: none;
+			font-weight: 600;
+			transition: all 0.3s ease;
+			border: none;
+			cursor: pointer;
+			font-size: 1rem;
+		}
+
+		.btn-primary:hover {
+			transform: translateY(-3px);
+			box-shadow: 0 15px 40px rgba(245, 158, 11, 0.4);
+		}
+
+		.btn-secondary {
+			background: transparent;
+			color: white;
+			padding: 1rem 2rem;
+			border: 2px solid white;
+			border-radius: 50px;
+			text-decoration: none;
+			font-weight: 600;
+			transition: all 0.3s ease;
+		}
+
+		.btn-secondary:hover {
+			background: white;
+			color: #6366f1;
+		}
+
+		/* Features Section */
+		.features {
+			background: white;
+			padding: 5rem 0;
+		}
+
+		.features h2 {
+			text-align: center;
+			font-size: 2.5rem;
+			margin-bottom: 3rem;
+			color: #333;
+		}
+
+		.features-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 2rem;
+		}
+
+		.feature-card {
+			background: white;
+			padding: 2rem;
+			border-radius: 20px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+			text-align: center;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		.feature-card:hover {
+			transform: translateY(-10px);
+			box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+		}
+
+		.feature-icon {
+			font-size: 3rem;
+			color: #6366f1;
+			margin-bottom: 1rem;
+		}
+
+		.feature-card h3 {
+			font-size: 1.5rem;
+			margin-bottom: 1rem;
+			color: #333;
+		}
+
+		.feature-card p {
+			color: #666;
+			line-height: 1.6;
+		}
+
+		/* Invitation Creator */
+		.creator {
+			background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+			padding: 5rem 0;
+			display: none;
+		}
+
+		.creator.active {
+			display: block;
+		}
+
+		.creator h2 {
+			text-align: center;
+			font-size: 2.5rem;
+			margin-bottom: 3rem;
+			color: #333;
+		}
+
+		.creator-container {
+			background: white;
+			border-radius: 20px;
+			padding: 2rem;
+			box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+			max-width: 800px;
 			margin: 0 auto;
 		}
 
-		/* Button styles */
-		.btn {
-			display: inline-block;
-			padding: 12px 24px;
-			font-size: 18px;
-			font-weight: bold;
-			color: #fff;
-			background-color: #FF5757;
-			border-radius: 8px;
-			text-decoration: none;
-			box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
-			transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-			transform: translateY(0px);
+		.form-group {
+			margin-bottom: 1.5rem;
 		}
 
-		.btn:hover {
-			background-color: #09BFAA;
-			box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.4);
-			transform: translateY(-6px);
-		}
-
-		/* Title styles */
-		h1 {
-			margin-bottom: 36px;
-			font-size: 48px;
-			font-weight: bold;
-			color: #555;
-			text-shadow: 1px 1px #fff;
-		}
-
-		/* Link styles */
-		a {
-			color: #09BFAA;
-			text-decoration: none;
-			transition: color 0.2s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-			font-size: 24px;
-			font-weight: 600;
+		.form-group label {
 			display: block;
-			margin: 24px 0;
-			padding: 12px 24px;
-			border-radius: 8px;
-			box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
-			transform: translateY(0px);
+			margin-bottom: 0.5rem;
+			font-weight: 600;
+			color: #333;
 		}
 
-		a:hover {
-			color: #fff;
-			background-color: #09BFAA;
-			box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.4);
-			transform: translateY(-6px);
+		.form-group input,
+		.form-group select,
+		.form-group textarea {
+			width: 100%;
+			padding: 0.75rem;
+			border: 2px solid #e5e7eb;
+			border-radius: 10px;
+			font-size: 1rem;
+			transition: border-color 0.3s ease;
+		}
+
+		.form-group input:focus,
+		.form-group select:focus,
+		.form-group textarea:focus {
+			outline: none;
+			border-color: #6366f1;
+		}
+
+		.event-types {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+			gap: 1rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.event-type {
+			background: #f8fafc;
+			border: 2px solid #e5e7eb;
+			border-radius: 10px;
+			padding: 1rem;
+			text-align: center;
+			cursor: pointer;
+			transition: all 0.3s ease;
+		}
+
+		.event-type:hover,
+		.event-type.selected {
+			border-color: #6366f1;
+			background: #eef2ff;
+		}
+
+		.event-type i {
+			font-size: 2rem;
+			color: #6366f1;
+			margin-bottom: 0.5rem;
+		}
+
+		.ai-suggestions {
+			background: #f0f9ff;
+			border: 2px solid #0ea5e9;
+			border-radius: 10px;
+			padding: 1rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.ai-suggestions h4 {
+			color: #0ea5e9;
+			margin-bottom: 0.5rem;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.suggestions-list {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.5rem;
+		}
+
+		.suggestion {
+			background: #0ea5e9;
+			color: white;
+			padding: 0.25rem 0.75rem;
+			border-radius: 20px;
+			font-size: 0.875rem;
+			cursor: pointer;
+			transition: background 0.3s ease;
+		}
+
+		.suggestion:hover {
+			background: #0284c7;
+		}
+
+		.preview {
+			background: #f8fafc;
+			border: 2px solid #e5e7eb;
+			border-radius: 10px;
+			padding: 2rem;
+			margin-top: 2rem;
+			text-align: center;
+		}
+
+		.preview h3 {
+			color: #333;
+			margin-bottom: 1rem;
+		}
+
+		.invitation-preview {
+			background: white;
+			border-radius: 15px;
+			padding: 2rem;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+			max-width: 400px;
+			margin: 0 auto;
+		}
+
+		.invitation-preview h4 {
+			color: #6366f1;
+			font-size: 1.5rem;
+			margin-bottom: 1rem;
+		}
+
+		/* Responsive Design */
+		@media (max-width: 768px) {
+			.nav-links {
+				display: none;
+			}
+
+			.hero h1 {
+				font-size: 2.5rem;
+			}
+
+			.hero-buttons {
+				flex-direction: column;
+				align-items: center;
+			}
+
+			.features-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.event-types {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+
+		/* Animations */
+		@keyframes fadeInUp {
+			from {
+				opacity: 0;
+				transform: translateY(30px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.fade-in-up {
+			animation: fadeInUp 0.6s ease-out;
+		}
+
+		/* Loading Animation */
+		.loading {
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			border: 3px solid #f3f3f3;
+			border-top: 3px solid #6366f1;
+			border-radius: 50%;
+			animation: spin 1s linear infinite;
+		}
+
+		@keyframes spin {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
 		}
 	</style>
 </head>
 <body>
-	<div class="container">
-		<h1>Link List Page</h1>
-		<a class="btn" href="https://trickms.com/">Visit Trickms.com</a>
-		<a class="btn" href="https://trickms.com/png-to-webp-converter/">Convert PNG to WEBP</a>
-		<a class="btn" href="https://trickms.com/check-your-internet-speed/">Check Your Internet Speed</a>
-	</div>
+	<header>
+		<nav class="container">
+			<a href="#" class="logo">Invitely.fun</a>
+			<ul class="nav-links">
+				<li><a href="#home" onclick="showSection('home')">Home</a></li>
+				<li><a href="#features" onclick="showSection('features')">Features</a></li>
+				<li><a href="#create" onclick="showSection('create')">Create</a></li>
+			</ul>
+			<a href="#create" class="cta-button" onclick="showSection('create')">Start Creating</a>
+		</nav>
+	</header>
+
+	<main>
+		<!-- Home Section -->
+		<section id="home" class="section">
+			<div class="hero">
+				<div class="container">
+					<h1 class="fade-in-up">Create Stunning Invitations with AI</h1>
+					<p class="fade-in-up">Invitely is a free, AI-powered platform designed to make creating and managing invitations effortless and enjoyable. Focus on the fun while we handle the details!</p>
+					<div class="hero-buttons fade-in-up">
+						<button class="btn-primary" onclick="showSection('create')">
+							<i class="fas fa-magic"></i> Create Your Invitation
+						</button>
+						<a href="#features" class="btn-secondary" onclick="showSection('features')">Learn More</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Features Section -->
+		<section id="features" class="features section" style="display: none;">
+			<div class="container">
+				<h2>Why Choose Invitely?</h2>
+				<div class="features-grid">
+					<div class="feature-card fade-in-up">
+						<div class="feature-icon">
+							<i class="fas fa-robot"></i>
+						</div>
+						<h3>AI-Powered Creation</h3>
+						<p>Our intelligent AI helps you craft the perfect invitation text, suggests themes, and personalizes content based on your event type.</p>
+					</div>
+					<div class="feature-card fade-in-up">
+						<div class="feature-icon">
+							<i class="fas fa-palette"></i>
+						</div>
+						<h3>Beautiful Templates</h3>
+						<p>Choose from hundreds of professionally designed templates for every occasion - birthdays, weddings, corporate events, and more.</p>
+					</div>
+					<div class="feature-card fade-in-up">
+						<div class="feature-icon">
+							<i class="fas fa-mobile-alt"></i>
+						</div>
+						<h3>Mobile Optimized</h3>
+						<p>Create and manage invitations on any device. Your guests can RSVP easily from their phones with our responsive design.</p>
+					</div>
+					<div class="feature-card fade-in-up">
+						<div class="feature-icon">
+							<i class="fas fa-share-alt"></i>
+						</div>
+						<h3>Easy Sharing</h3>
+						<p>Share your invitations via email, social media, or generate a unique link. Track RSVPs and manage guest lists effortlessly.</p>
+					</div>
+					<div class="feature-card fade-in-up">
+						<div class="feature-icon">
+							<i class="fas fa-gift"></i>
+						</div>
+						<h3>100% Free</h3>
+						<p>All features are completely free. No hidden costs, no premium plans. Just beautiful invitations for everyone.</p>
+					</div>
+					<div class="feature-card fade-in-up">
+						<div class="feature-icon">
+							<i class="fas fa-clock"></i>
+						</div>
+						<h3>Quick & Easy</h3>
+						<p>Create stunning invitations in minutes, not hours. Our streamlined process gets you from idea to invitation fast.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Creator Section -->
+		<section id="create" class="creator section">
+			<div class="container">
+				<h2>Create Your Perfect Invitation</h2>
+				<div class="creator-container">
+					<form id="invitation-form">
+						<div class="form-group">
+							<label>What type of event are you planning?</label>
+							<div class="event-types">
+								<div class="event-type" data-type="birthday">
+									<i class="fas fa-birthday-cake"></i>
+									<div>Birthday</div>
+								</div>
+								<div class="event-type" data-type="wedding">
+									<i class="fas fa-heart"></i>
+									<div>Wedding</div>
+								</div>
+								<div class="event-type" data-type="party">
+									<i class="fas fa-glass-cheers"></i>
+									<div>Party</div>
+								</div>
+								<div class="event-type" data-type="corporate">
+									<i class="fas fa-briefcase"></i>
+									<div>Corporate</div>
+								</div>
+								<div class="event-type" data-type="graduation">
+									<i class="fas fa-graduation-cap"></i>
+									<div>Graduation</div>
+								</div>
+								<div class="event-type" data-type="baby-shower">
+									<i class="fas fa-baby"></i>
+									<div>Baby Shower</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="event-title">Event Title</label>
+							<input type="text" id="event-title" placeholder="e.g., Sarah's 25th Birthday Bash">
+						</div>
+
+						<div class="form-group">
+							<label for="event-date">Date & Time</label>
+							<input type="datetime-local" id="event-date">
+						</div>
+
+						<div class="form-group">
+							<label for="event-location">Location</label>
+							<input type="text" id="event-location" placeholder="e.g., Central Park, New York">
+						</div>
+
+						<div class="form-group">
+							<label for="event-description">Event Description</label>
+							<textarea id="event-description" rows="4" placeholder="Tell your guests what to expect..."></textarea>
+						</div>
+
+						<div class="ai-suggestions" id="ai-suggestions" style="display: none;">
+							<h4><i class="fas fa-lightbulb"></i> AI Suggestions</h4>
+							<div class="suggestions-list" id="suggestions-list"></div>
+						</div>
+
+						<div class="form-group">
+							<label for="host-name">Host Name</label>
+							<input type="text" id="host-name" placeholder="Your name">
+						</div>
+
+						<div class="form-group">
+							<label for="rsvp-info">RSVP Information</label>
+							<input type="text" id="rsvp-info" placeholder="e.g., Reply by March 15th or call (555) 123-4567">
+						</div>
+
+						<button type="button" class="btn-primary" onclick="generatePreview()" style="width: 100%; margin-bottom: 1rem;">
+							<i class="fas fa-eye"></i> Preview Invitation
+						</button>
+
+						<button type="button" class="btn-primary" onclick="generateInvitation()" style="width: 100%;">
+							<i class="fas fa-magic"></i> Generate with AI
+						</button>
+					</form>
+
+					<div class="preview" id="preview" style="display: none;">
+						<h3>Preview</h3>
+						<div class="invitation-preview" id="invitation-preview">
+							<!-- Preview content will be generated here -->
+						</div>
+						<button class="btn-primary" onclick="downloadInvitation()" style="margin-top: 1rem;">
+							<i class="fas fa-download"></i> Download Invitation
+						</button>
+						<button class="btn-secondary" onclick="shareInvitation()" style="margin-top: 1rem; margin-left: 1rem;">
+							<i class="fas fa-share"></i> Share
+						</button>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<script>
+		let selectedEventType = '';
+
+		// Show different sections
+		function showSection(sectionName) {
+			const sections = document.querySelectorAll('.section');
+			sections.forEach(section => {
+				section.style.display = 'none';
+			});
+			
+			const targetSection = document.getElementById(sectionName);
+			if (targetSection) {
+				targetSection.style.display = 'block';
+				
+				// Add animation
+				if (sectionName === 'create') {
+					targetSection.classList.add('creator');
+					targetSection.classList.add('active');
+				}
+			}
+		}
+
+		// Event type selection
+		document.querySelectorAll('.event-type').forEach(type => {
+			type.addEventListener('click', function() {
+				document.querySelectorAll('.event-type').forEach(t => t.classList.remove('selected'));
+				this.classList.add('selected');
+				selectedEventType = this.dataset.type;
+				showAISuggestions();
+			});
+		});
+
+		// AI Suggestions based on event type
+		function showAISuggestions() {
+			const suggestions = {
+				'birthday': ['Make it memorable', 'Bring your appetite', 'Cake and celebrations await', 'Another year of awesome'],
+				'wedding': ['Join us in celebration', 'Love is in the air', 'A day to remember', 'Two hearts become one'],
+				'party': ['Let\'s party', 'Good vibes only', 'Dance the night away', 'Fun guaranteed'],
+				'corporate': ['Professional networking', 'Industry insights', 'Career development', 'Team building'],
+				'graduation': ['Celebrating achievements', 'New beginnings', 'Academic success', 'Proud moments'],
+				'baby-shower': ['Bundle of joy', 'New arrival celebration', 'Baby love', 'Tiny miracles']
+			};
+
+			const aiSuggestions = document.getElementById('ai-suggestions');
+			const suggestionsList = document.getElementById('suggestions-list');
+			
+			if (selectedEventType && suggestions[selectedEventType]) {
+				suggestionsList.innerHTML = '';
+				suggestions[selectedEventType].forEach(suggestion => {
+					const span = document.createElement('span');
+					span.className = 'suggestion';
+					span.textContent = suggestion;
+					span.onclick = () => addSuggestionToDescription(suggestion);
+					suggestionsList.appendChild(span);
+				});
+				aiSuggestions.style.display = 'block';
+			}
+		}
+
+		function addSuggestionToDescription(suggestion) {
+			const description = document.getElementById('event-description');
+			if (description.value) {
+				description.value += ' ' + suggestion + '.';
+			} else {
+				description.value = suggestion + '.';
+			}
+		}
+
+		// Generate preview
+		function generatePreview() {
+			const title = document.getElementById('event-title').value || 'Your Amazing Event';
+			const date = document.getElementById('event-date').value;
+			const location = document.getElementById('event-location').value || 'Location TBD';
+			const description = document.getElementById('event-description').value || 'Join us for an unforgettable experience!';
+			const host = document.getElementById('host-name').value || 'Event Host';
+			const rsvp = document.getElementById('rsvp-info').value || 'Please RSVP';
+
+			const formattedDate = date ? new Date(date).toLocaleDateString('en-US', {
+				weekday: 'long',
+				year: 'numeric',
+				month: 'long',
+				day: 'numeric',
+				hour: '2-digit',
+				minute: '2-digit'
+			}) : 'Date & Time TBD';
+
+			const preview = document.getElementById('invitation-preview');
+			preview.innerHTML = `
+				<h4>🎉 ${title}</h4>
+				<p><strong>📅 When:</strong> ${formattedDate}</p>
+				<p><strong>📍 Where:</strong> ${location}</p>
+				<p><strong>📝 Details:</strong> ${description}</p>
+				<p><strong>👤 Hosted by:</strong> ${host}</p>
+				<p><strong>💌 RSVP:</strong> ${rsvp}</p>
+			`;
+
+			document.getElementById('preview').style.display = 'block';
+		}
+
+		// Simulate AI generation
+		function generateInvitation() {
+			const button = event.target;
+			const originalText = button.innerHTML;
+			
+			// Show loading
+			button.innerHTML = '<span class="loading"></span> Generating with AI...';
+			button.disabled = true;
+
+			setTimeout(() => {
+				// AI-enhanced suggestions
+				if (selectedEventType) {
+					const aiEnhancements = {
+						'birthday': {
+							title: 'Birthday Celebration Extraordinaire',
+							description: 'Join us for a spectacular birthday celebration filled with joy, laughter, and unforgettable memories!'
+						},
+						'wedding': {
+							title: 'A Celebration of Love',
+							description: 'We invite you to witness and celebrate the union of two hearts in a ceremony filled with love and joy.'
+						},
+						'party': {
+							title: 'Epic Party Experience',
+							description: 'Get ready for an amazing party with great music, delicious food, and incredible company!'
+						}
+					};
+
+					const enhancement = aiEnhancements[selectedEventType];
+					if (enhancement) {
+						if (!document.getElementById('event-title').value) {
+							document.getElementById('event-title').value = enhancement.title;
+						}
+						if (!document.getElementById('event-description').value) {
+							document.getElementById('event-description').value = enhancement.description;
+						}
+					}
+				}
+
+				generatePreview();
+				button.innerHTML = originalText;
+				button.disabled = false;
+			}, 2000);
+		}
+
+		// Download invitation (simulated)
+		function downloadInvitation() {
+			alert('🎉 Your invitation is ready! In a real implementation, this would generate a beautiful PDF or image file for download.');
+		}
+
+		// Share invitation (simulated)
+		function shareInvitation() {
+			if (navigator.share) {
+				navigator.share({
+					title: 'You\'re Invited!',
+					text: 'Check out this amazing event invitation created with Invitely.fun',
+					url: window.location.href
+				});
+			} else {
+				// Fallback for browsers that don't support Web Share API
+				const url = encodeURIComponent(window.location.href);
+				const text = encodeURIComponent('Check out this amazing event invitation created with Invitely.fun');
+				
+				const shareOptions = [
+					{ name: 'Email', url: `mailto:?subject=You're Invited!&body=${text} ${url}` },
+					{ name: 'Twitter', url: `https://twitter.com/intent/tweet?text=${text}&url=${url}` },
+					{ name: 'Facebook', url: `https://www.facebook.com/sharer/sharer.php?u=${url}` }
+				];
+
+				const shareMenu = shareOptions.map(option => 
+					`<a href="${option.url}" target="_blank" style="display: block; padding: 0.5rem; text-decoration: none; color: #6366f1;">${option.name}</a>`
+				).join('');
+
+				const popup = window.open('', 'share', 'width=300,height=200');
+				popup.document.write(`
+					<div style="padding: 1rem; font-family: Inter, sans-serif;">
+						<h3>Share Your Invitation</h3>
+						${shareMenu}
+					</div>
+				`);
+			}
+		}
+
+		// Initialize the app
+		document.addEventListener('DOMContentLoaded', function() {
+			showSection('home');
+			
+			// Add smooth scrolling
+			document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+				anchor.addEventListener('click', function (e) {
+					e.preventDefault();
+					const target = document.querySelector(this.getAttribute('href'));
+					if (target) {
+						target.scrollIntoView({
+							behavior: 'smooth'
+						});
+					}
+				});
+			});
+		});
+	</script>
 </body>
 </html>
