@@ -1,15 +1,115 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title>404 Not Found</title>
-    <link rel="stylesheet"https://gg.tutorialgtp.com/404css.css">
-  </head>
-  <body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Invitely.fun</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .error-container {
+            max-width: 600px;
+            padding: 2rem;
+        }
+
+        .error-container h1 {
+            font-size: 8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .error-container h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .error-container p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .button {
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin: 0.5rem;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.4);
+        }
+
+        .button.secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .button.secondary:hover {
+            background: white;
+            color: #6366f1;
+        }
+
+        .emoji {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .error-container h1 {
+                font-size: 6rem;
+            }
+
+            .error-container h2 {
+                font-size: 1.5rem;
+            }
+
+            .error-container p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
     <div class="error-container">
-      <h1>404</h1>
-      <p>Oops! The page you are looking for cannot be found.</p>
-      <a href="https://tutorialgtp.com/tools" class="button">Go Back</a>
+        <span class="emoji">🎉</span>
+        <h1>404</h1>
+        <h2>Oops! Invitation Not Found</h2>
+        <p>The page you're looking for seems to have gotten lost on its way to the party. Don't worry, we'll help you get back to creating amazing invitations!</p>
+        <a href="/" class="button">🏠 Go Home</a>
+        <a href="/#create" class="button secondary">✨ Create Invitation</a>
     </div>
-  </body>
+</body>
 </html>
